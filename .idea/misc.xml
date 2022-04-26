@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/Android/GetTheWine/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Programming/Android/GetTheWine/app/src/main/res/layout/fragment_page1.xml" value="0.4041666666666667" />
+        <entry key="..\:/Programming/Android/GetTheWine/app/src/main/res/layout/fragment_page2.xml" value="0.4041666666666667" />
+        <entry key="..\:/Programming/Android/GetTheWine/app/src/main/res/layout/fragment_page3.xml" value="0.4041666666666667" />
         <entry key="..\:/Programming/GetTheWine2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.4035" />
         <entry key="..\:/Programming/GetTheWine2/app/src/main/res/layout/activity_main.xml" value="0.39010416666666664" />
         <entry key="..\:/Programming/GetTheWine2/app/src/main/res/layout/fragment_page1.xml" value="0.4041666666666667" />
