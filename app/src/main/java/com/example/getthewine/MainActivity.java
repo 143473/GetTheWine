@@ -1,56 +1,44 @@
 package com.example.getthewine;
-
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.camera.core.CameraSelector;
-import androidx.camera.core.ImageAnalysis;
-import androidx.camera.core.ImageCapture;
-import androidx.camera.core.ImageCaptureException;
-import androidx.camera.core.ImageProxy;
-import androidx.camera.core.Preview;
-import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
+
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.getthewine.Auth.SignInActivity;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.common.util.concurrent.ListenableFuture;
-
-import java.io.File;
-import java.util.Date;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity{
 
     private TabLayout tabs;
     private ViewPager2 viewPager2;
 
-    private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
-    private PreviewView previewView;
-    private ImageCapture imageCapture;
-
-    Button takePicture, savePicture;
-    private ImageAnalysis imageAnalysis;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user!=null){
+            Toast.makeText(this, "Welcome back " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+        }
+        else{
+            startLoginActivity();
+        }
 
         tabs = findViewById(R.id.tabs);
         viewPager2 = findViewById(R.id.viewPager);
@@ -61,101 +49,64 @@ public class MainActivity extends AppCompatActivity{
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText("Tab " + (position+1));
+               switch (position){
+                   case 0:
+                       tab.setText("by Camera");
+                       break;
+                   case 1:
+                       tab.setText("by Name");
+                       break;
+                   case 2:
+                       tab.setText("by Meal");
+                       break;
+               }
             }
         }).attach();
-
-//        //Camera stuff + buttons
-//
-//        previewView = findViewById(R.id.previewView);
-//
-//        takePicture = findViewById(R.id.takePicture);
-//        savePicture = findViewById(R.id.savePicture);
-//
-//        takePicture.setOnClickListener(this);
-//        savePicture.setOnClickListener(this);
-//
-//        cameraProviderFuture = ProcessCameraProvider.getInstance(this);
-//        cameraProviderFuture.addListener(() ->{
-//            try{
-//                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
-//                startCameraX(cameraProvider);
-//            }
-//            catch (ExecutionException | InterruptedException e){
-//                e.printStackTrace();
-//            }
-//        }, getExecutor());
     }
-//
-//    private void startCameraX(ProcessCameraProvider cameraProvider) {
-//        cameraProvider.unbindAll();
-//
-//        //Camera selector use case
-//        CameraSelector cameraSelector = new CameraSelector.Builder()
-//                .requireLensFacing(CameraSelector.LENS_FACING_BACK)
-//                .build();
-//
-//        //Preview use case
-//        Preview preview = new Preview.Builder().build();
-//
-//        preview.setSurfaceProvider(previewView.getSurfaceProvider());
-//
-//        //Image capture use case
-//        imageCapture = new ImageCapture.Builder()
-//                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-//                .build();
-//
-//        //Image analysis use case
-//        imageAnalysis = new ImageAnalysis.Builder()
-//                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-//                .build();
-//
-//        cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis);
-//    }
-//
-//
-//    private Executor getExecutor() {
-//        return ContextCompat.getMainExecutor(this);
-//    }
-//
-//    @Override
-//    public void onClick(View view) {
-//        capturePhoto();
-//    }
-//
-//    private void capturePhoto() {
-//        long timestamp = System.currentTimeMillis();
-//
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, timestamp);
-//        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
-//
-//
-//        imageCapture.takePicture(
-//                new ImageCapture.OutputFileOptions.Builder(
-//                        getContentResolver(),
-//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                        contentValues
-//                ).build(),
-//                getExecutor(),
-//                new ImageCapture.OnImageSavedCallback() {
-//                    @Override
-//                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-//                        Toast.makeText(MainActivity.this, "Photo saved successfully.", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onError(@NonNull ImageCaptureException exception) {
-//                        Toast.makeText(MainActivity.this, "Error saving the photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//        );
-//    }
-//
-//    @Override
-//    public void analyze(@NonNull ImageProxy image) {
-//        // Image processing here for the current frame
-//        Log.d(TAG,"analyze the frame at: " + image.getImageInfo().getTimestamp());
-//        image.close();
-//    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.main_menu, menu);
+
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId()==R.id.action_favorite){
+            Toast.makeText(this, "Mmmm my precious!!", Toast.LENGTH_SHORT).show();
+        }
+
+        if (item.getItemId()==R.id.action_settings){
+            Toast.makeText(this, "What settings?", Toast.LENGTH_SHORT).show();
+        }
+
+        if (item.getItemId()==R.id.action_signOut){
+            signOut();
+            Toast.makeText(this, "You were successfully signed out.", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void signOut(){
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startLoginActivity();
+                    }
+                });
+    }
+
+    private void startLoginActivity() {
+        Intent signInIntent = new Intent(this, SignInActivity.class);
+        startActivity(signInIntent);
+    }
 }

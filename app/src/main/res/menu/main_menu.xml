@@ -13,7 +13,7 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_account"
-        android:title="Account"
+        android:id="@+id/action_signOut"
+        android:title="Sign Out"
         app:showAsAction="never" />
 </menu>

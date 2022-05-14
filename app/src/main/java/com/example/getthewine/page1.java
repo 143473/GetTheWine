@@ -57,7 +57,6 @@ public class page1 extends Fragment implements View.OnClickListener, ImageAnalys
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
     }
 
     @Override
