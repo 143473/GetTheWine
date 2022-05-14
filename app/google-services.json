@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "661421247332",
+    "project_id": "getthewine-24c27",
+    "storage_bucket": "getthewine-24c27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661421247332:android:fff09a193c1b64e4468871",
+        "android_client_info": {
+          "package_name": "com.example.getthewine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661421247332-no3auqpf2dcl2k5n1h63sq8besp6k7fq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.getthewine",
+            "certificate_hash": "d56d22f9191db56babf9f8971f0749cbd7b01966"
+          }
+        },
+        {
+          "client_id": "661421247332-jv4rdrnee9ovhc3l1cipqsnrk8ahfnqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbWIesk_d06CPzwPOQuOAsEMHn8LJxsEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661421247332-jv4rdrnee9ovhc3l1cipqsnrk8ahfnqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
