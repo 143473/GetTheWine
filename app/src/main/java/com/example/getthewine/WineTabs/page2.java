@@ -87,7 +87,6 @@ public class page2 extends Fragment {
 
         editText = rootView.findViewById(R.id.textInputField);
         searchButton = rootView.findViewById(R.id.searchButton);
-        textView = rootView.findViewById(R.id.textView3);
 
         recyclerView = rootView.findViewById(R.id.recycleView);
         wineAdapter = new page2WineAdapter();
