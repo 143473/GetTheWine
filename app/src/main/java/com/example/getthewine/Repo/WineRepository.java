@@ -1,9 +1,14 @@
-package com.example.getthewine;
+package com.example.getthewine.Repo;
 
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.example.getthewine.API.ServiceGenerator;
+import com.example.getthewine.API.WineApi;
+import com.example.getthewine.API.WineResponse;
+import com.example.getthewine.Models.Wine;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,9 +36,11 @@ public class WineRepository {
     }
 
 
-    public void searchForPokemon(String wineName) {
+    public void searchForWine() {
         WineApi wineApi = ServiceGenerator.getWineApi();
-        Call<WineResponse> call = wineApi.getWine(wineName);
+//        Call<WineResponse> call = wineApi.getWineById(id, language);
+//        Call<WineResponse> call = wineApi.getWine(wineName, perPage, page, search);
+        Call<WineResponse> call = wineApi.getWineHardCoded();
         call.enqueue(new Callback<WineResponse>() {
             @EverythingIsNonNull
             @Override

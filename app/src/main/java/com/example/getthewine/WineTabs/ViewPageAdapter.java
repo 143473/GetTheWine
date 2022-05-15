@@ -1,4 +1,4 @@
-package com.example.getthewine;
+package com.example.getthewine.WineTabs;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

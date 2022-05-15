@@ -1,4 +1,4 @@
-package com.example.getthewine;
+package com.example.getthewine.WineTabs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.getthewine.Auth.SignInActivity;
+import com.example.getthewine.R;
+import com.example.getthewine.WineTabs.ViewPageAdapter;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
                 });
     }
 
-    private void startLoginActivity() {
+    private void startLoginActivity(){
         Intent signInIntent = new Intent(this, SignInActivity.class);
         startActivity(signInIntent);
     }

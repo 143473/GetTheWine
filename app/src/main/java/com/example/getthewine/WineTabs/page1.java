@@ -1,4 +1,4 @@
-package com.example.getthewine;
+package com.example.getthewine.WineTabs;
 
 import static android.content.ContentValues.TAG;
 
@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.getthewine.R;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;

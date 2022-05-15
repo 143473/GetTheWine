@@ -1,4 +1,4 @@
-package com.example.getthewine;
+package com.example.getthewine.WineTabs;
 
 import android.os.Bundle;
 
@@ -7,6 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.getthewine.R;
+import com.example.getthewine.Repo.WineRepository;
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +29,13 @@ public class page2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private WineRepository repository;
+
+    private View rootView = null;
+    private Button searchButton;
+
+    private TextInputEditText editText;
+    private TextView textView;
 
     public page2() {
         // Required empty public constructor
@@ -58,7 +71,29 @@ public class page2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_page2, container, false);
+        rootView = inflater.inflate(R.layout.fragment_page2, container, false);
+
+        repository = WineRepository.getInstance();
+
+        editText = rootView.findViewById(R.id.textInputField);
+        searchButton = rootView.findViewById(R.id.searchButton);
+        textView = rootView.findViewById(R.id.textView3);
+
+        repository.getSearchedWine().observe(this, wine -> textView.setText(wine.toString()));
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchForWine();
+            }
+        });
+
+        return rootView;
+    }
+
+    public void searchForWine(){
+        repository.searchForWine();
     }
 }
