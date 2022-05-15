@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.getthewine.Auth.SignInActivity;
@@ -18,8 +17,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -31,14 +28,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(user!=null){
-            Toast.makeText(this, "Welcome back " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-        }
-        else{
-            startLoginActivity();
-        }
 
         tabs = findViewById(R.id.tabs);
         viewPager2 = findViewById(R.id.viewPager);

@@ -35,8 +35,6 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(instanceState);
         setContentView(R.layout.activity_sign_in);
 
-
-
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
