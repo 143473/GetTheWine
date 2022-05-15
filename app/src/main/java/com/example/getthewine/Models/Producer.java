@@ -24,4 +24,16 @@ public class Producer {
                 ", country=" + region +
                 '}';
     }
+
+    public String getProducerName() {
+        return producerName;
+    }
+
+    public void setProducerName(String producerName) {
+        this.producerName = producerName;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
 }

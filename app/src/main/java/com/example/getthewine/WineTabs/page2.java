@@ -3,6 +3,7 @@ package com.example.getthewine.WineTabs;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.getthewine.Models.Wine;
 import com.example.getthewine.R;
 import com.example.getthewine.Repo.WineRepository;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +41,9 @@ public class page2 extends Fragment {
 
     private TextInputEditText editText;
     private TextView textView;
+
+    private page2WineAdapter wineAdapter;
+    private RecyclerView recyclerView;
 
     public page2() {
         // Required empty public constructor
@@ -81,12 +89,19 @@ public class page2 extends Fragment {
         searchButton = rootView.findViewById(R.id.searchButton);
         textView = rootView.findViewById(R.id.textView3);
 
-        repository.getSearchedWine().observe(this, wine -> textView.setText(wine.toString()));
+        recyclerView = rootView.findViewById(R.id.recycleView);
+        wineAdapter = new page2WineAdapter();
+        recyclerView.setAdapter(wineAdapter);
+
+        repository.getSearchedWineList().observe(getViewLifecycleOwner(), wineList ->{
+            wineAdapter.setWineList(wineList);
+        } );
+
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchForWine();
+                searchForWineList();
             }
         });
 
@@ -95,5 +110,9 @@ public class page2 extends Fragment {
 
     public void searchForWine(){
         repository.searchForWine();
+    }
+
+    public void searchForWineList(){
+        repository.searchForWineList();
     }
 }

@@ -10,6 +10,10 @@ import com.example.getthewine.API.WineApi;
 import com.example.getthewine.API.WineResponse;
 import com.example.getthewine.Models.Wine;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,9 +23,11 @@ public class WineRepository {
 
     private static WineRepository instance;
     private final MutableLiveData<Wine> searchedWine;
+    private final MutableLiveData<List<Wine>> searchedWineList;
 
     private WineRepository() {
         searchedWine = new MutableLiveData<>();
+        searchedWineList = new MutableLiveData<>();
     }
 
     public static synchronized WineRepository getInstance() {
@@ -35,11 +41,12 @@ public class WineRepository {
         return searchedWine;
     }
 
+    public LiveData<List<Wine>> getSearchedWineList(){
+        return searchedWineList;
+    }
 
     public void searchForWine() {
         WineApi wineApi = ServiceGenerator.getWineApi();
-//        Call<WineResponse> call = wineApi.getWineById(id, language);
-//        Call<WineResponse> call = wineApi.getWine(wineName, perPage, page, search);
         Call<WineResponse> call = wineApi.getWineHardCoded();
         call.enqueue(new Callback<WineResponse>() {
             @EverythingIsNonNull
@@ -49,13 +56,34 @@ public class WineRepository {
                     searchedWine.setValue(response.body().getWine());
                 }
             }
-
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<WineResponse> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :(");
             }
         });
+    }
 
+    public void searchForWineList() {
+        WineApi wineApi = ServiceGenerator.getWineApi();
+        Call<List<WineResponse>> call = wineApi.getSearchedWineListCoded();
+        call.enqueue(new Callback<List<WineResponse>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<WineResponse>> call, Response<List<WineResponse>> response) {
+                if (response.isSuccessful() && response.body()!= null) {
+                    List<Wine> wineList = new ArrayList<>();
+                        for (int i = 0; i < response.body().size(); i++) {
+                            wineList.add(response.body().get(i).getWine());
+                        }
+                        searchedWineList.setValue(wineList);
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<WineResponse>> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :(");
+            }
+        });
     }
 }

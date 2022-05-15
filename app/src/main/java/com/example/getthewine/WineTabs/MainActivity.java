@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity{
     private TabLayout tabs;
     private ViewPager2 viewPager2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         tabs = findViewById(R.id.tabs);
         viewPager2 = findViewById(R.id.viewPager);
@@ -54,6 +53,8 @@ public class MainActivity extends AppCompatActivity{
                }
             }
         }).attach();
+
+
     }
 
     @Override
