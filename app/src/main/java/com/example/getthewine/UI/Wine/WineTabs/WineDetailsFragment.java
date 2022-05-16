@@ -1,6 +1,5 @@
-package com.example.getthewine;
+package com.example.getthewine.UI.Wine.WineTabs;
 
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.getthewine.Models.Wine;
+import com.example.getthewine.R;
 import com.google.gson.Gson;
 
 public class WineDetailsFragment extends Fragment {
@@ -19,7 +19,6 @@ public class WineDetailsFragment extends Fragment {
         return new WineDetailsFragment();
     }
 
-    private WineDetailsViewModel mViewModel;
     private View rootView = null;
     private TextView textView;
 
@@ -44,9 +43,8 @@ public class WineDetailsFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(WineDetailsViewModel.class);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         // TODO: Use the ViewModel
     }
 

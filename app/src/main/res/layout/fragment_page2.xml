@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_purple"
-    tools:context=".WineTabs.page2">
+    tools:context=".UI.Wine.WineTabs.SearchByNameFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="8dp"
-        android:hint="Wine name"
+        android:hint="Search wine by name"
         android:maxLines="1"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"

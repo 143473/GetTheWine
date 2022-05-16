@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetTheWine">
         <activity
-            android:name=".Auth.SignInActivity"
+            android:name=".UI.Auth.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WineTabs.MainActivity"
+            android:name=".UI.Wine.WineTabs.WineMainActivity"
             android:exported="true">
         </activity>
         <meta-data

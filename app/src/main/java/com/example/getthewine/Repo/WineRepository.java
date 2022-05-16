@@ -1,5 +1,6 @@
 package com.example.getthewine.Repo;
 
+import android.app.Application;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -11,7 +12,6 @@ import com.example.getthewine.API.WineResponse;
 import com.example.getthewine.Models.Wine;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,17 +22,20 @@ import retrofit2.internal.EverythingIsNonNull;
 public class WineRepository {
 
     private static WineRepository instance;
+    private Application application;
+
     private final MutableLiveData<Wine> searchedWine;
     private final MutableLiveData<List<Wine>> searchedWineList;
 
-    private WineRepository() {
+    private WineRepository(Application application) {
+        this.application = application;
         searchedWine = new MutableLiveData<>();
         searchedWineList = new MutableLiveData<>();
     }
 
-    public static synchronized WineRepository getInstance() {
+    public static synchronized WineRepository getInstance(Application application) {
         if (instance == null) {
-            instance = new WineRepository();
+            instance = new WineRepository(application);
         }
         return instance;
     }

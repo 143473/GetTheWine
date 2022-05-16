@@ -1,4 +1,4 @@
-package com.example.getthewine.WineTabs;
+package com.example.getthewine.UI.Wine.WineTabs;
 
 import static android.content.ContentValues.TAG;
 
@@ -52,20 +52,20 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 
-public class page1 extends Fragment implements View.OnClickListener, ImageAnalysis.Analyzer{
+public class ScanLabelFragment extends Fragment implements View.OnClickListener, ImageAnalysis.Analyzer{
 
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     private PreviewView previewView;
     private ImageCapture imageCapture;
 
-    FloatingActionButton takePicture;
+    private FloatingActionButton takePicture;
     private ImageAnalysis imageAnalysis;
     private TextRecognizer recognizer;
 
     private Context context = null;
     private View rootView = null;
 
-    public page1() {
+    public ScanLabelFragment() {
         // Required empty public constructor
     }
 

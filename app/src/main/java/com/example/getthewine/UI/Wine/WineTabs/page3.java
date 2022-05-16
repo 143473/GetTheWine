@@ -1,4 +1,4 @@
-package com.example.getthewine.WineTabs;
+package com.example.getthewine.UI.Wine.WineTabs;
 
 import android.os.Bundle;
 

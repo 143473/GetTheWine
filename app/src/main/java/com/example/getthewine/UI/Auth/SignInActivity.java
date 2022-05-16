@@ -1,20 +1,16 @@
-package com.example.getthewine.Auth;
+package com.example.getthewine.UI.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.getthewine.WineTabs.MainActivity;
+import com.example.getthewine.UI.Wine.WineTabs.WineMainActivity;
 import com.example.getthewine.R;
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.mipmap.ic_logo)
+                .setLogo(R.mipmap.ic_logo_foreground)
                 .build();
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
@@ -48,27 +44,9 @@ public class SignInActivity extends AppCompatActivity {
         activityResultLauncher.launch(signInIntent);
     }
 
-    public void signIn(View v) {
-
-    }
-
     private void goToMainActivity() {
-        Intent mainIntent = new Intent(this, MainActivity.class);
+        Intent mainIntent = new Intent(this, WineMainActivity.class);
         startActivity(mainIntent);
     }
 
-    public void signOut(View v){
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        startLoginActivity();
-                    }
-                });
-    }
-
-    private void startLoginActivity() {
-
-    }
 }

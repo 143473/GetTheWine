@@ -1,4 +1,4 @@
-package com.example.getthewine.WineTabs;
+package com.example.getthewine.UI.Wine.WineTabs;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,25 +8,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.getthewine.API.WineApi;
 import com.example.getthewine.Models.Wine;
 import com.example.getthewine.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class page2WineAdapter extends RecyclerView.Adapter<page2WineAdapter.ViewHolder> {
+public class WineRecyclerViewAdapter extends RecyclerView.Adapter<WineRecyclerViewAdapter.ViewHolder> {
 
 private List<Wine> wineList;
 private OnClickListener listener;
 
-public page2WineAdapter(){
+public WineRecyclerViewAdapter(){
     wineList = new ArrayList<>();
 }
 
     public void setWineList(List<Wine> wineList) {
         this.wineList = wineList;
-        notifyDataSetChanged();
     }
 
     public void setOnClickListener(OnClickListener listener){

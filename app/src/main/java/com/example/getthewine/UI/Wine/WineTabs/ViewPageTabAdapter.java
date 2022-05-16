@@ -1,15 +1,13 @@
-package com.example.getthewine.WineTabs;
+package com.example.getthewine.UI.Wine.WineTabs;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.getthewine.WineDetailsFragment;
+public class ViewPageTabAdapter extends FragmentStateAdapter {
 
-public class ViewPageAdapter extends FragmentStateAdapter {
-
-    public ViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
+    public ViewPageTabAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -18,11 +16,11 @@ public class ViewPageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 1:
-                return new page2();
+                return new ScanLabelFragment();
             case 2:
                 return new page3();
             default:
-                return new page1();
+                return new SearchByNameFragment();
         }
     }
 

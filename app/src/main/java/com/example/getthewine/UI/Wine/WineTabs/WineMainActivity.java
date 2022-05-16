@@ -1,7 +1,8 @@
-package com.example.getthewine.WineTabs;
+package com.example.getthewine.UI.Wine.WineTabs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -11,19 +12,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.getthewine.Auth.SignInActivity;
+import com.example.getthewine.UI.Auth.SignInActivity;
 import com.example.getthewine.R;
-import com.example.getthewine.WineTabs.ViewPageAdapter;
+import com.example.getthewine.UI.Auth.UserViewModel;
+import com.example.getthewine.UI.Wine.WineTabs.ViewPageTabAdapter;
+import com.example.getthewine.UI.Wine.WineTabs.WineViewModel;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity{
+public class WineMainActivity extends AppCompatActivity{
 
     private TabLayout tabs;
     private ViewPager2 viewPager2;
+    private WineViewModel wineViewModel;
+    private UserViewModel userViewModel;
 
 
     @Override
@@ -31,10 +36,13 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
         tabs = findViewById(R.id.tabs);
         viewPager2 = findViewById(R.id.viewPager);
 
-        ViewPageAdapter adapter = new ViewPageAdapter(this);
+        ViewPageTabAdapter adapter = new ViewPageTabAdapter(this);
         viewPager2.setAdapter(adapter);
 
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -42,10 +50,10 @@ public class MainActivity extends AppCompatActivity{
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                switch (position){
                    case 0:
-                       tab.setText("Scan Label");
+                       tab.setText("Search by Name");
                        break;
                    case 1:
-                       tab.setText("Search Name");
+                       tab.setText("Scan Label");
                        break;
                    case 2:
                        tab.setText("Wine Info");
@@ -53,19 +61,13 @@ public class MainActivity extends AppCompatActivity{
                }
             }
         }).attach();
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
-
         inflater.inflate(R.menu.main_menu, menu);
-
         return true;
-
     }
 
     @Override
@@ -87,19 +89,14 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void signOut(){
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        startLoginActivity();
-                    }
-                });
-    }
-
     private void startLoginActivity(){
         Intent signInIntent = new Intent(this, SignInActivity.class);
         startActivity(signInIntent);
+        finish();
+    }
+
+    private void signOut(){
+        userViewModel.signOut();
+        startLoginActivity();
     }
 }
