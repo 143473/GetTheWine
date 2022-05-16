@@ -42,13 +42,13 @@ public class MainActivity extends AppCompatActivity{
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                switch (position){
                    case 0:
-                       tab.setText("by Camera");
+                       tab.setText("Scan Label");
                        break;
                    case 1:
-                       tab.setText("by Name");
+                       tab.setText("Search Name");
                        break;
                    case 2:
-                       tab.setText("by Meal");
+                       tab.setText("Wine Info");
                        break;
                }
             }

@@ -47,13 +47,13 @@ public class WineRepository {
 
     public void searchForWine() {
         WineApi wineApi = ServiceGenerator.getWineApi();
-        Call<WineResponse> call = wineApi.getWineHardCoded();
+        Call<WineResponse> call = wineApi.getWineHardCodedById();
         call.enqueue(new Callback<WineResponse>() {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<WineResponse> call, Response<WineResponse> response) {
-                if (response.isSuccessful()) {
-                    searchedWine.setValue(response.body().getWine());
+                if (response.isSuccessful() && response.body()!= null) {
+                    searchedWine.setValue(response.body().getDetailedWine());
                 }
             }
             @EverythingIsNonNull

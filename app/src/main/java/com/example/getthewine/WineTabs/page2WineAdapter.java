@@ -18,7 +18,7 @@ import java.util.List;
 public class page2WineAdapter extends RecyclerView.Adapter<page2WineAdapter.ViewHolder> {
 
 private List<Wine> wineList;
-private View.OnClickListener listener;
+private OnClickListener listener;
 
 public page2WineAdapter(){
     wineList = new ArrayList<>();
@@ -27,6 +27,10 @@ public page2WineAdapter(){
     public void setWineList(List<Wine> wineList) {
         this.wineList = wineList;
         notifyDataSetChanged();
+    }
+
+    public void setOnClickListener(OnClickListener listener){
+        this.listener = listener;
     }
 
     @NonNull
@@ -62,9 +66,12 @@ public page2WineAdapter(){
             wineColor = itemView.findViewById(R.id.wineColor);
             wineCountry = itemView.findViewById(R.id.wineCountry);
 
-//            itemView.setOnClickListener(v -> {
-//                listener.onClick(pets.get(getBindingAdapterPosition()));
-//            });
+            itemView.setOnClickListener(v -> {
+                listener.onClick(wineList.get(getBindingAdapterPosition()));
+            });
         }
+    }
+    public interface OnClickListener {
+        void onClick(Wine wine);
     }
 }
