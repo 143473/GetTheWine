@@ -29,10 +29,6 @@ public class UserRepository {
         AuthUI.getInstance().signOut(application.getApplicationContext());
     }
 
-    public String getCurrentUserUId(){
-        String uid = "";
-        return uid;
-    }
 
     public FirebaseUser getCurrentUser(){
         return FirebaseAuth.getInstance().getCurrentUser();

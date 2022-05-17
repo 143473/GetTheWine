@@ -3,6 +3,7 @@ package com.example.getthewine.Repo;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -10,7 +11,13 @@ import com.example.getthewine.API.ServiceGenerator;
 import com.example.getthewine.API.WineApi;
 import com.example.getthewine.API.WineResponse;
 import com.example.getthewine.DAO.DAOWine;
+import com.example.getthewine.DAO.WineLiveData;
 import com.example.getthewine.Models.Wine;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +36,22 @@ public class WineRepository {
     private final MutableLiveData<Wine> searchedWine;
     private final MutableLiveData<List<Wine>> searchedWineList;
 
+    private DatabaseReference databaseReference;
+    private MutableLiveData<List<Wine>> favouriteWineList;
+    private WineLiveData wine;
+
     private WineRepository(Application application) {
         daoWine = new DAOWine(application);
         this.application = application;
         searchedWine = new MutableLiveData<>();
         searchedWineList = new MutableLiveData<>();
+        favouriteWineList = new MutableLiveData<>();
+    }
+
+    public void init() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://getthewine-24c27-default-rtdb.europe-west1.firebasedatabase.app/");
+        databaseReference = database.getReference().child("data");
+        wine = new WineLiveData(databaseReference);
     }
 
     public static synchronized WineRepository getInstance(Application application) {
@@ -93,11 +111,32 @@ public class WineRepository {
             });
     }
 
-    public void addWineToFavorites(Wine wine){
-        daoWine.addWineToFavorites(wine);
+    public void retrieveFavouriteWineList() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Wine> wines = new ArrayList<>();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Wine wine = dataSnapshot.getValue(Wine.class);
+                    System.out.println(wine.toString());
+                    System.out.println("The KEEEYYYY" +  snapshot.getKey());
+                    wines.add(wine);
+                }
+                favouriteWineList.setValue(wines);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
-    public void getFavouriteWineList() {
-        daoWine.getFavouriteWineList();
+    public LiveData<List<Wine>> getFavouriteWineList() {
+        return favouriteWineList;
+    }
+
+    public void addWineToFavorites(Wine wine) {
+        daoWine.addWineToFavorites(wine);
     }
 }

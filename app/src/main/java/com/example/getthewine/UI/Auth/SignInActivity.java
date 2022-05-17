@@ -35,7 +35,7 @@ public class SignInActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.mipmap.ic_logo_foreground)
+                .setLogo(R.mipmap.ic_launcher_foreground)
                 .build();
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(

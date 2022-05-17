@@ -12,6 +12,10 @@ public class Producer {
         this.region = region;
     }
 
+    public Producer(){
+
+    }
+
     public Producer(String name, Region region) {
         this.producerName = name;
         this.region = region;

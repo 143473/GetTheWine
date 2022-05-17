@@ -1,19 +1,20 @@
 package com.example.getthewine.Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Wine {
     private int id;
     private String name;
     private String color;
-    private List<String> grapes;
-    private Region region;
-    private Producer producer;
-    private List<String> taste_tags;
-    private List<String> event_tags;
+    private List<String> grapes = new ArrayList<>();
+    private Region region = new Region();
+    private Producer producer = new Producer();
+    private List<String> taste_tags = new ArrayList<>();
+    private List<String> event_tags = new ArrayList<>();
     private String price_range;
     private int lifespan;
-    private WineTemperature optimal_drinking_temperature;
+    private WineTemperature optimal_drinking_temperature = new WineTemperature();
     private String description;
 
     public Wine(){

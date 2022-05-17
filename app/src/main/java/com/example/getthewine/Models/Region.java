@@ -15,6 +15,10 @@ public class Region {
         this.region = region;
     }
 
+    public Region(){
+
+    }
+
     @Override
     public String toString() {
         return country + ", " + region;

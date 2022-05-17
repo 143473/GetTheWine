@@ -9,6 +9,10 @@ public class WineTemperature {
         this.fahrenheit = fahrenheit;
     }
 
+    public WineTemperature(){
+
+    }
+
     @Override
     public String toString() {
         return "Optimal serving temperature" +

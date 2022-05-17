@@ -2,14 +2,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/wineDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:backgroundTint="#DADADA"
     android:elevation="4dp"
-    app:cardCornerRadius="8dp"
-    tools:context=".UI.Wine.OtherWineFragments.WineDetailsFragment">
+    app:cardCornerRadius="8dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -18,7 +16,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/wineName"
+            android:id="@+id/wineName1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -28,7 +26,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/wineColor"
+            android:id="@+id/wineColor1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -38,7 +36,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/grapes"
+            android:id="@+id/grapes1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -48,7 +46,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/wineRegion"
+            android:id="@+id/wineRegion1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wine_region"
@@ -58,7 +56,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/producer"
+            android:id="@+id/producer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wine_producer"
@@ -68,7 +66,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/priceRange"
+            android:id="@+id/priceRange1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/price_range"
@@ -78,7 +76,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/lifespan"
+            android:id="@+id/lifespan1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lifespan"
@@ -88,7 +86,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/drinkingTemperature"
+            android:id="@+id/drinkingTemperature1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/optimal_drinking_temperature"
@@ -98,7 +96,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/wineDescription"
+            android:id="@+id/wineDescription1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wine_description"
@@ -108,7 +106,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/tasteTags"
+            android:id="@+id/tasteTags1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/potential_taste_tags"
@@ -118,7 +116,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/eventTags"
+            android:id="@+id/eventTags1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/potential_event_pairing"
