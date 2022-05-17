@@ -19,3 +19,6 @@ I'm not a connoisseur of wine and i don't know much about it. I don't know which
 Thoughts:
 Implementing a Text recognition system proved to be more complicated than expected hence taking too much time to figure it out and to implement.
 I didn't manage to find a proper free API for my application. Therefore i went with MockiAPI, basically dummy data. The dummy data is taken from a real API tested with swagger and the company's dummy token. All the formats used in the application follow the webAPI's structure.
+
+Youtube link:
+https://youtu.be/SfGaVPtky8k
