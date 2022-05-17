@@ -53,22 +53,6 @@ public class DAOWine {
         });
     }
 
-    public void getFavouriteWineList() {
-       databaseReference.child("data").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                String message = "";
-                if(task.isSuccessful()){
-                    message = "This wine was successfully added to your collection";
-                }
-                else{
-                    message = "Error while adding this wine to your collection";
-                }
-                Toast.makeText( application.getApplicationContext(), message + "", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     public void removeWineFromFavourites(int id){
         databaseReference.child(Integer.toString(id)).setValue(null);
     }

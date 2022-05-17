@@ -118,8 +118,6 @@ public class WineRepository {
                 List<Wine> wines = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Wine wine = dataSnapshot.getValue(Wine.class);
-                    System.out.println(wine.toString());
-                    System.out.println("The KEEEYYYY" +  snapshot.getKey());
                     wines.add(wine);
                 }
                 favouriteWineList.setValue(wines);

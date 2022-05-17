@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/wineDetailsFragment3"
         android:name="com.example.getthewine.UI.Wine.OtherWineFragments.WineDetailsFragment"
-        android:label="wine_details_fragment"
+        android:label="Wine details"
         tools:layout="@layout/wine_details_fragment" >
         <action
             android:id="@+id/action_wineDetailsFragment3_to_recommendedMealsFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/mainWineFragment"
         android:name="com.example.getthewine.UI.Wine.WineTabs.MainWineFragment"
-        android:label="main_wine_fragment"
+        android:label="GetTheWine"
         tools:layout="@layout/main_wine_fragment" >
         <action
             android:id="@+id/action_mainWineFragment_to_wineDetailsFragment3"
@@ -44,11 +44,11 @@
     <activity
         android:id="@+id/signInActivity"
         android:name="com.example.getthewine.UI.Auth.SignInActivity"
-        android:label="activity_sign_in"
+        android:label="Sign in"
         tools:layout="@layout/activity_sign_in" />
     <fragment
         android:id="@+id/recommendedMealsFragment"
         android:name="com.example.getthewine.UI.Meal.RecommendedMealsFragment"
-        android:label="recommended_meals"
+        android:label="Suggested meals for the wine"
         tools:layout="@layout/recommended_meals" />
 </navigation>

@@ -145,22 +145,6 @@ public class ScanLabelFragment extends Fragment implements View.OnClickListener,
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, timestamp);
         contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
-//        imageCapture.takePicture(getExecutor(), new ImageCapture.OnImageCapturedCallback() {
-//            @Override
-//            public void onCaptureSuccess(@NonNull ImageProxy image) {
-//                super.onCaptureSuccess(image);
-//                analyze(image);
-//                Toast.makeText(context, "Photo saved successfully.", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onError(@NonNull ImageCaptureException exception) {
-//                super.onError(exception);
-//                Toast.makeText(context, "Error saving the photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
 
         imageCapture.takePicture(
                 new ImageCapture.OutputFileOptions.Builder(
@@ -185,115 +169,9 @@ public class ScanLabelFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void analyze(@NonNull ImageProxy image) {
-        // Image processing here for the current frame
+
         Log.d(TAG, "analyze the frame at: " + image.getImageInfo().getTimestamp());
-
-        String text = "";
-        @SuppressLint("UnsafeOptInUsageError") Image mediaImage = image.getImage();
-        if (mediaImage != null) {
-            InputImage inputImage =
-                    InputImage.fromMediaImage(mediaImage, image.getImageInfo().getRotationDegrees());
-            recognizeText(inputImage);
-
-
-            // Pass image to an ML Kit Vision API
-            // ...
-            //text = recognizer.process(inputImage).toString();
-        }
-        System.out.println("-----------------" + text);
-
         image.close();
 
     }
-
-
-    //Text recognition stuff
-
-//    public String invokeImage(ImageProxy imageProxy) {
-//        String text = "";
-//        Image mediaImage = imageProxy.getImage();
-//        System.out.println("+++++++++++++++++++++++" + mediaImage.toString());
-//        if (mediaImage != null) {
-//            InputImage image =
-//                    InputImage.fromMediaImage(mediaImage, imageProxy.getImageInfo().getRotationDegrees());
-//            // Pass image to an ML Kit Vision API
-//            // ...
-//            text = recognizer.process(image).toString();
-//        }
-//        return text;
-//    }
-    private void recognizeText(InputImage image) {
-
-        // [START get_detector_default]
-        TextRecognizer recognizer = TextRecognition.getClient();
-        // [END get_detector_default]
-
-        // [START run_detector]
-        Task<Text> result =
-                recognizer.process(image)
-                        .addOnSuccessListener(new OnSuccessListener<Text>() {
-                            @Override
-                            public void onSuccess(Text visionText) {
-                                // Task completed successfully
-                                // [START_EXCLUDE]
-                                // [START get_text]
-
-                                for (Text.TextBlock block : visionText.getTextBlocks()) {
-                                    Rect boundingBox = block.getBoundingBox();
-                                    Point[] cornerPoints = block.getCornerPoints();
-                                    String text = block.getText();
-
-                                    for (Text.Line line: block.getLines()) {
-
-                                        // ...
-                                        for (Text.Element element: line.getElements()) {
-                                            // ...
-                                        }
-                                    }
-                                }
-                                // [END get_text]
-                                // [END_EXCLUDE]
-                            }
-                        })
-                        .addOnFailureListener(
-                                new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(context, "Error getting the text: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                        // Task failed with an exception
-                                        // ...
-                                    }
-                                });
-        // [END run_detector]
-    }
-
-    private void processTextBlock(Text result) {
-        // [START mlkit_process_text_block]
-        String resultText = result.getText();
-        for (Text.TextBlock block : result.getTextBlocks()) {
-            String blockText = block.getText();
-            Point[] blockCornerPoints = block.getCornerPoints();
-            Rect blockFrame = block.getBoundingBox();
-            for (Text.Line line : block.getLines()) {
-                String lineText = line.getText();
-                Point[] lineCornerPoints = line.getCornerPoints();
-                Rect lineFrame = line.getBoundingBox();
-                for (Text.Element element : line.getElements()) {
-                    String elementText = element.getText();
-                    Point[] elementCornerPoints = element.getCornerPoints();
-                    Rect elementFrame = element.getBoundingBox();
-                }
-            }
-        }
-        // [END mlkit_process_text_block]
-    }
-//
-//    private TextRecognizer getTextRecognizer() {
-//        // [START mlkit_local_doc_recognizer]
-//        TextRecognizer detector = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
-//        // [END mlkit_local_doc_recognizer]
-//
-//        return detector;
-//    }
 }

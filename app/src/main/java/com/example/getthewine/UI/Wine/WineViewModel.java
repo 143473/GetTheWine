@@ -25,11 +25,9 @@ import java.util.List;
 public class WineViewModel extends AndroidViewModel {
     private UserRepository userRepository;
     private WineRepository wineRepository;
-    private DAOWine daoWine;
     private Fragment temp;
     private int id;
-    private MutableLiveData<List<Wine>> favouriteWineList;
-    private DatabaseReference databaseReference;
+
 
     public WineViewModel(@NonNull Application application) {
         super(application);
