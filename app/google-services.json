@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "661421247332",
+    "firebase_url": "https://getthewine-24c27-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "getthewine-24c27",
     "storage_bucket": "getthewine-24c27.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "661421247332-98kuma2d4hufg9o1tdtjdqukld37i16k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.getthewine",
+            "certificate_hash": "5db342e7c03a58da1ecb7eea98c82b8faa3ddcf0"
+          }
+        },
         {
           "client_id": "661421247332-no3auqpf2dcl2k5n1h63sq8besp6k7fq.apps.googleusercontent.com",
           "client_type": 1,

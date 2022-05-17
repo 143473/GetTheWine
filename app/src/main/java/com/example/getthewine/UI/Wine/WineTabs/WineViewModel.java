@@ -3,6 +3,7 @@ package com.example.getthewine.UI.Wine.WineTabs;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -47,5 +48,9 @@ public class WineViewModel extends AndroidViewModel {
 
     public int getId() {
         return id;
+    }
+
+    public void addWineToFavorites(Wine wine){
+        wineRepository.addWineToFavorites(wine);
     }
 }

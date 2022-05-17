@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.getthewine.Repo.UserRepository;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UserViewModel extends AndroidViewModel {
 
@@ -18,5 +19,9 @@ public class UserViewModel extends AndroidViewModel {
 
     public void signOut(){
         userRepository.signOut();
+    }
+
+    public FirebaseUser getCurrentUser(){
+        return userRepository.getCurrentUser();
     }
 }

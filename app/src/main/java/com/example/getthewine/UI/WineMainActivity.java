@@ -4,6 +4,7 @@ import static androidx.navigation.ui.NavigationUI.setupActionBarWithNavControlle
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.example.getthewine.UI.Auth.SignInActivity;
 import com.example.getthewine.R;
 import com.example.getthewine.UI.Auth.UserViewModel;
+import com.example.getthewine.UI.Wine.WineTabs.MainWineFragment;
 import com.example.getthewine.UI.Wine.WineTabs.ViewPageTabAdapter;
 import com.example.getthewine.UI.Wine.WineTabs.WineViewModel;
 import com.example.getthewine.databinding.ActivityMainBinding;
@@ -36,8 +38,7 @@ public class WineMainActivity extends AppCompatActivity{
 
     private ActivityMainBinding binding;
     private AppBarConfiguration appBarConfiguration;
-    private TabLayout tabs;
-    private ViewPager2 viewPager2;
+
     private WineViewModel wineViewModel;
     private UserViewModel userViewModel;
 
@@ -52,37 +53,10 @@ public class WineMainActivity extends AppCompatActivity{
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        // Get the navigation host fragment from this Activity
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-// Instantiate the navController using the NavHostFragment
         NavController navController = navHostFragment.getNavController();
-         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-// Make sure actions in the ActionBar get propagated to the NavController
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         setupActionBarWithNavController(this, navController);
-
-//
-//        tabs = findViewById(R.id.tabs);
-//        viewPager2 = findViewById(R.id.viewPager);
-//
-//        ViewPageTabAdapter adapter = new ViewPageTabAdapter(this);
-//        viewPager2.setAdapter(adapter);
-//
-//        new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
-//            @Override
-//            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-//               switch (position){
-//                   case 0:
-//                       tab.setText("Search by Name");
-//                       break;
-//                   case 1:
-//                       tab.setText("Scan Label");
-//                       break;
-//                   case 2:
-//                       tab.setText("Wine Info");
-//                       break;
-//               }
-//            }
-//        }).attach();
     }
 
     @Override public boolean onSupportNavigateUp()
@@ -104,10 +78,6 @@ public class WineMainActivity extends AppCompatActivity{
 
         if (item.getItemId()==R.id.action_favorite){
             Toast.makeText(this, "Mmmm my precious!!", Toast.LENGTH_SHORT).show();
-        }
-
-        if (item.getItemId()==R.id.action_settings){
-            Toast.makeText(this, "What settings?", Toast.LENGTH_SHORT).show();
         }
 
         if (item.getItemId()==R.id.action_signOut){

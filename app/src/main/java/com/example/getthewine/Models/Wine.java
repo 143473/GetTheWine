@@ -16,6 +16,10 @@ public class Wine {
     private WineTemperature optimal_drinking_temperature;
     private String description;
 
+    public Wine(){
+
+    }
+
 
     public Wine(int id, String name, String color, Producer producer) {
         this.id = id;

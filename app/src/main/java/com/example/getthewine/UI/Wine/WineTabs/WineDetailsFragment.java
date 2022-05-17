@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.getthewine.Models.Wine;
 import com.example.getthewine.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.Objects;
@@ -37,6 +39,8 @@ public class WineDetailsFragment extends Fragment {
     private TextView drinkingTemperature;
     private TextView description;
 
+    private FloatingActionButton addToFavorites;
+
     private WineViewModel wineViewModel;
 
     public WineDetailsFragment(){
@@ -54,6 +58,9 @@ public class WineDetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.wine_details_fragment, container, false);
+
+        addToFavorites = rootView.findViewById(R.id.addToFavorites);
+
 
         name = rootView.findViewById(R.id.wineName);
         color = rootView.findViewById(R.id.wineColor);
@@ -85,12 +92,20 @@ public class WineDetailsFragment extends Fragment {
             eventTags.setText(text);
             text = String.format(getResources().getString(R.string.price_range) + "\n%s", wine.getPrice_range());
             priceRange.setText(text);
-            text = String.format(getResources().getString(R.string.lifespan) + "\n%d", wine.getLifespan());
+            text = String.format(getResources().getString(R.string.lifespan) + "\n%d years", wine.getLifespan());
             lifespan.setText(text);
             text = String.format(getResources().getString(R.string.optimal_drinking_temperature) + "\n%f", wine.getOptimal_drinking_temperature().getCelsius());
             drinkingTemperature.setText(text);
             text = String.format(getResources().getString(R.string.wine_description) + "\n%s", wine.getDescription());
             description.setText(text);
+        });
+
+        addToFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Wine wine = wineViewModel.getSearchedWine().getValue();
+                wineViewModel.addWineToFavorites(wine);
+            }
         });
 
         return rootView;
@@ -99,6 +114,5 @@ public class WineDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 }

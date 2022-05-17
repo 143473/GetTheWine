@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.getthewine.API.ServiceGenerator;
 import com.example.getthewine.API.WineApi;
 import com.example.getthewine.API.WineResponse;
+import com.example.getthewine.DAO.DAOWine;
 import com.example.getthewine.Models.Wine;
 
 import java.util.ArrayList;
@@ -23,11 +24,13 @@ public class WineRepository {
 
     private static WineRepository instance;
     private Application application;
+    private DAOWine daoWine;
 
     private final MutableLiveData<Wine> searchedWine;
     private final MutableLiveData<List<Wine>> searchedWineList;
 
     private WineRepository(Application application) {
+        daoWine = new DAOWine(application);
         this.application = application;
         searchedWine = new MutableLiveData<>();
         searchedWineList = new MutableLiveData<>();
@@ -88,5 +91,9 @@ public class WineRepository {
                     Log.i("Retrofit", "Something went wrong :(");
                 }
             });
+    }
+
+    public void addWineToFavorites(Wine wine){
+        daoWine.addWineToFavorites(wine);
     }
 }
