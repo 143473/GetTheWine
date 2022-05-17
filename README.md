@@ -6,8 +6,17 @@ I'm not a connoisseur of wine and i don't know much about it. I don't know which
 
 # Requirements
 
-1. I want to be able to log in in order to personalize my choices.
-2. I want to be able to scan different types of wine by using the phone's camera
-3. I want to check information about the scanned wine(rating, description)
-4. I want to save my wine preferences by adding the scanned bottle to the favorites list
-5. I want to be able to share the wine of choice with somebody else
+1. ~~I want to be able to log in in order to personalize my choices.
+2. I want to be able to scan different types of wine by using the phone's camera.
+3. ~~I want to check information about the scanned wine(rating, description).
+4. I want to save my wine preferences by adding the scanned bottle to the favorites list.
+5. I want to be able to share the wine of choice with somebody else.
+6. ~~I want to be able to add a wine to my list of favourites.
+7. I want to be able to delete a wine of choices from the list of favourites.
+8. ~~I want to be able to check suitable meals for the wine i'm checking.
+9. ~~I want to be able to log out, so another user can log in with its own account.
+10. ~~I want to search for a bottle of wine by typing its name.
+
+Thoughts:
+Implementing a Text recognition system proved to be more complicated than expected hence taking too much time to figure it out and to implement.
+I didn't manage to find a proper free API for my application. Therefore i went with MockiAPI, basically dummy data. The dummy data is taken from a real API tested with swagger and the company's dummy token. All the formats used in the application follow the webAPI's structure.
