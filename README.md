@@ -9,7 +9,7 @@ I'm not a connoisseur of wine and i don't know much about it. I don't know which
 1. ~~I want to be able to log in in order to personalize my choices.~~
 2. I want to be able to scan different types of wine by using the phone's camera.
 3. ~~I want to check information about the scanned wine(rating, description).~~ 
-4. I want to save my wine preferences by adding the scanned bottle to the favorites list.
+4. ~~I want to save my wine preferences by adding the scanned bottle to the favorites list.~~
 5. I want to be able to share the wine of choice with somebody else.
 6. ~~I want to be able to add a wine to my list of favourites.~~
 7. I want to be able to delete a wine of choices from the list of favourites.
