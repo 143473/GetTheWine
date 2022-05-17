@@ -15,6 +15,8 @@ import com.example.getthewine.Models.Wine;
 import com.example.getthewine.R;
 import com.google.gson.Gson;
 
+import java.util.Objects;
+
 public class WineDetailsFragment extends Fragment {
 
     public static WineDetailsFragment newInstance() {
@@ -34,6 +36,12 @@ public class WineDetailsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+           int id = bundle.getInt("wineId");
+            System.out.println(id);
+            wineViewModel.searchForWine();
+        }
     }
 
     @Override
@@ -41,6 +49,7 @@ public class WineDetailsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.wine_details_fragment, container, false);
         textView = rootView.findViewById(R.id.text);
+       // textView.setText(wineViewModel.getSearchedWine().toString());
 
         return rootView;
     }
@@ -48,6 +57,6 @@ public class WineDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
+
     }
 }

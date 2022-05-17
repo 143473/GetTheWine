@@ -71,8 +71,8 @@ public class SearchByNameFragment extends Fragment {
         recyclerView.setAdapter(recyclerViewAdapter);
 
         recyclerViewAdapter.setOnClickListener(wine -> {
-            wineViewModel.setWineId(wine.getId());
-            goToDetailsFragment();
+            //wineViewModel.setWineId(wine.getId());
+            goToDetailsFragment(wine.getId());
         });
 
         wineViewModel.getSearchedWineList().observe(getViewLifecycleOwner(), wineList ->{
@@ -102,7 +102,12 @@ public class SearchByNameFragment extends Fragment {
         wineViewModel.searchForWineList();
     }
 
-    public void goToDetailsFragment(){
+    public void goToDetailsFragment(int id){
+
+            Fragment fragment = new Fragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("wineId", id);
+            fragment.setArguments(bundle);
 
         NavHostFragment.findNavController(this).navigate(R.id.action_mainWineFragment_to_wineDetailsFragment3);
     }

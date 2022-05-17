@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -23,6 +24,7 @@ import com.example.getthewine.R;
 import com.example.getthewine.UI.Auth.UserViewModel;
 import com.example.getthewine.UI.Wine.WineTabs.ViewPageTabAdapter;
 import com.example.getthewine.UI.Wine.WineTabs.WineViewModel;
+import com.example.getthewine.databinding.ActivityMainBinding;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +34,8 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class WineMainActivity extends AppCompatActivity{
 
+    private ActivityMainBinding binding;
+    private AppBarConfiguration appBarConfiguration;
     private TabLayout tabs;
     private ViewPager2 viewPager2;
     private WineViewModel wineViewModel;
@@ -45,10 +49,14 @@ public class WineMainActivity extends AppCompatActivity{
 
         wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
         // Get the navigation host fragment from this Activity
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
 // Instantiate the navController using the NavHostFragment
         NavController navController = navHostFragment.getNavController();
+         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 // Make sure actions in the ActionBar get propagated to the NavController
         setupActionBarWithNavController(this, navController);
 
@@ -75,6 +83,13 @@ public class WineMainActivity extends AppCompatActivity{
 //               }
 //            }
 //        }).attach();
+    }
+
+    @Override public boolean onSupportNavigateUp()
+    {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     @Override
