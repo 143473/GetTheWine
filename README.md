@@ -14,8 +14,7 @@ I'm not a connoisseur of wine and i don't know much about it. I don't know which
 6. ~~I want to be able to add a wine to my list of favourites.~~
 7. I want to be able to delete a wine of choices from the list of favourites.
 8. ~~I want to be able to check suitable meals for the wine i'm checking.~~
-9. ~~I want to be able to log out, so another user can log in with its own account.~~
-10. ~~I want to search for a bottle of wine by typing its name.~~
+9. ~~I want to search for a bottle of wine by typing its name.~~
 
 Thoughts:
 Implementing a Text recognition system proved to be more complicated than expected hence taking too much time to figure it out and to implement.
