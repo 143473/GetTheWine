@@ -3,16 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/wineMainActivity4">
-    <activity
-        android:id="@+id/wineMainActivity4"
-        android:name="com.example.getthewine.UI.Wine.WineTabs.WineMainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-    <activity
-        android:id="@+id/signInActivity4"
-        android:name="com.example.getthewine.UI.Auth.SignInActivity"
-        android:label="SignInActivity" />
+    app:startDestination="@id/mainWineFragment">
     <fragment
         android:id="@+id/scanLabelFragment3"
         android:name="com.example.getthewine.UI.Wine.WineTabs.ScanLabelFragment"
@@ -23,12 +14,12 @@
         android:name="com.example.getthewine.UI.Wine.WineTabs.SearchByNameFragment"
         android:label="fragment_page2"
         tools:layout="@layout/fragment_page2" >
-        <action
-            android:id="@+id/action_searchByNameFragment2_to_wineDetailsFragment3"
-            app:destination="@id/wineDetailsFragment3" />
         <argument
             android:name="wineId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_searchByNameFragment2_to_wineDetailsFragment3"
+            app:destination="@id/wineDetailsFragment3" />
     </fragment>
     <fragment
         android:id="@+id/page32"
@@ -40,4 +31,13 @@
         android:name="com.example.getthewine.UI.Wine.WineTabs.WineDetailsFragment"
         android:label="wine_details_fragment"
         tools:layout="@layout/wine_details_fragment" />
+    <fragment
+        android:id="@+id/mainWineFragment"
+        android:name="com.example.getthewine.UI.Wine.WineTabs.MainWineFragment"
+        android:label="main_wine_fragment"
+        tools:layout="@layout/main_wine_fragment" >
+        <action
+            android:id="@+id/action_mainWineFragment_to_wineDetailsFragment3"
+            app:destination="@id/wineDetailsFragment3" />
+    </fragment>
 </navigation>

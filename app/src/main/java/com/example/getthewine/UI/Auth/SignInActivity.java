@@ -8,7 +8,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.getthewine.UI.Wine.WineTabs.WineMainActivity;
+import com.example.getthewine.UI.WineMainActivity;
 import com.example.getthewine.R;
 import com.firebase.ui.auth.AuthUI;
 
@@ -47,6 +47,7 @@ public class SignInActivity extends AppCompatActivity {
     private void goToMainActivity() {
         Intent mainIntent = new Intent(this, WineMainActivity.class);
         startActivity(mainIntent);
+        finish();
     }
 
 }

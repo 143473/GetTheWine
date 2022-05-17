@@ -4,6 +4,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,30 +24,30 @@ public class WineDetailsFragment extends Fragment {
     private View rootView = null;
     private TextView textView;
 
+    private WineViewModel wineViewModel;
+
     public WineDetailsFragment(){
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.wine_details_fragment, container, false);
+        textView = rootView.findViewById(R.id.text);
 
-        String jsonWineObject = null;
-        Bundle extras = getActivity().getIntent().getExtras();
-        if(extras !=null){
-            jsonWineObject = extras.getString("wine");
-        }
-        textView = rootView.findViewById(R.id.textView);
-        Wine wine = new Gson().fromJson(jsonWineObject, Wine.class);
-        textView.setText(wine.getName());
         return rootView;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        
     }
-
 }

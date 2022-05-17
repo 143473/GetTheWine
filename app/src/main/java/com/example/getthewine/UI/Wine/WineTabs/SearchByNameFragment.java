@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.ActionOnlyNavDirections;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.KeyEvent;
@@ -64,14 +67,16 @@ public class SearchByNameFragment extends Fragment {
         editText = rootView.findViewById(R.id.textInputField);
         recyclerView = rootView.findViewById(R.id.recycleView);
 
-        recyclerView.setAdapter(wineViewModel.getRecyclerViewAdapter());
+        WineRecyclerViewAdapter  recyclerViewAdapter= new WineRecyclerViewAdapter();
+        recyclerView.setAdapter(recyclerViewAdapter);
 
-        wineViewModel.getRecyclerViewAdapter().setOnClickListener(wine -> {
-
+        recyclerViewAdapter.setOnClickListener(wine -> {
+            wineViewModel.setWineId(wine.getId());
+            goToDetailsFragment();
         });
 
         wineViewModel.getSearchedWineList().observe(getViewLifecycleOwner(), wineList ->{
-            wineViewModel.getRecyclerViewAdapter().setWineList(wineList);
+            recyclerViewAdapter.setWineList(wineList);
         } );
 
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -86,7 +91,6 @@ public class SearchByNameFragment extends Fragment {
                 return false;
             }
             });
-
         return rootView;
     }
 
@@ -96,5 +100,10 @@ public class SearchByNameFragment extends Fragment {
 
     public void searchForWineList(){
         wineViewModel.searchForWineList();
+    }
+
+    public void goToDetailsFragment(){
+
+        NavHostFragment.findNavController(this).navigate(R.id.action_mainWineFragment_to_wineDetailsFragment3);
     }
 }

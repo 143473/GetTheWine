@@ -58,7 +58,7 @@ public class ScanLabelFragment extends Fragment implements View.OnClickListener,
     private PreviewView previewView;
     private ImageCapture imageCapture;
 
-    private FloatingActionButton takePicture;
+    FloatingActionButton takePicture;
     private ImageAnalysis imageAnalysis;
     private TextRecognizer recognizer;
 

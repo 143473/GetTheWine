@@ -1,8 +1,14 @@
-package com.example.getthewine.UI.Wine.WineTabs;
+package com.example.getthewine.UI;
+import static androidx.navigation.ui.NavigationUI.setupActionBarWithNavController;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -20,6 +26,7 @@ import com.example.getthewine.UI.Wine.WineTabs.WineViewModel;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -38,29 +45,36 @@ public class WineMainActivity extends AppCompatActivity{
 
         wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        // Get the navigation host fragment from this Activity
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+// Instantiate the navController using the NavHostFragment
+        NavController navController = navHostFragment.getNavController();
+// Make sure actions in the ActionBar get propagated to the NavController
+        setupActionBarWithNavController(this, navController);
 
-        tabs = findViewById(R.id.tabs);
-        viewPager2 = findViewById(R.id.viewPager);
-
-        ViewPageTabAdapter adapter = new ViewPageTabAdapter(this);
-        viewPager2.setAdapter(adapter);
-
-        new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-               switch (position){
-                   case 0:
-                       tab.setText("Search by Name");
-                       break;
-                   case 1:
-                       tab.setText("Scan Label");
-                       break;
-                   case 2:
-                       tab.setText("Wine Info");
-                       break;
-               }
-            }
-        }).attach();
+//
+//        tabs = findViewById(R.id.tabs);
+//        viewPager2 = findViewById(R.id.viewPager);
+//
+//        ViewPageTabAdapter adapter = new ViewPageTabAdapter(this);
+//        viewPager2.setAdapter(adapter);
+//
+//        new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+//            @Override
+//            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+//               switch (position){
+//                   case 0:
+//                       tab.setText("Search by Name");
+//                       break;
+//                   case 1:
+//                       tab.setText("Scan Label");
+//                       break;
+//                   case 2:
+//                       tab.setText("Wine Info");
+//                       break;
+//               }
+//            }
+//        }).attach();
     }
 
     @Override

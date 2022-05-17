@@ -16,17 +16,13 @@ import java.util.List;
 public class WineViewModel extends AndroidViewModel {
     private UserRepository userRepository;
     private WineRepository wineRepository;
-    private WineRecyclerViewAdapter recyclerViewAdapter;
-
-
-
+    private int id;
 
     public WineViewModel(@NonNull Application application) {
         super(application);
 
         userRepository = UserRepository.getInstance(application);
         wineRepository = WineRepository.getInstance(application);
-        recyclerViewAdapter = new WineRecyclerViewAdapter();
     }
 
     public LiveData<List<Wine>> getSearchedWineList() {
@@ -45,7 +41,11 @@ public class WineViewModel extends AndroidViewModel {
        wineRepository.searchForWineList();
     }
 
-    public WineRecyclerViewAdapter getRecyclerViewAdapter() {
-        return recyclerViewAdapter;
+    public void setWineId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

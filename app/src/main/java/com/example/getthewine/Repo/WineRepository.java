@@ -68,25 +68,25 @@ public class WineRepository {
     }
 
     public void searchForWineList() {
-        WineApi wineApi = ServiceGenerator.getWineApi();
-        Call<List<WineResponse>> call = wineApi.getSearchedWineListCoded();
-        call.enqueue(new Callback<List<WineResponse>>() {
-            @EverythingIsNonNull
-            @Override
-            public void onResponse(Call<List<WineResponse>> call, Response<List<WineResponse>> response) {
-                if (response.isSuccessful() && response.body()!= null) {
-                    List<Wine> wineList = new ArrayList<>();
+            WineApi wineApi = ServiceGenerator.getWineApi();
+            Call<List<WineResponse>> call = wineApi.getSearchedWineListCoded();
+            call.enqueue(new Callback<List<WineResponse>>() {
+                @EverythingIsNonNull
+                @Override
+                public void onResponse(Call<List<WineResponse>> call, Response<List<WineResponse>> response) {
+                    if (response.isSuccessful() && response.body()!= null) {
+                        List<Wine> wineList = new ArrayList<>();
                         for (int i = 0; i < response.body().size(); i++) {
                             wineList.add(response.body().get(i).getWine());
                         }
                         searchedWineList.setValue(wineList);
+                    }
                 }
-            }
-            @EverythingIsNonNull
-            @Override
-            public void onFailure(Call<List<WineResponse>> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
-            }
-        });
+                @EverythingIsNonNull
+                @Override
+                public void onFailure(Call<List<WineResponse>> call, Throwable t) {
+                    Log.i("Retrofit", "Something went wrong :(");
+                }
+            });
     }
 }

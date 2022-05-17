@@ -25,6 +25,7 @@ public WineRecyclerViewAdapter(){
 
     public void setWineList(List<Wine> wineList) {
         this.wineList = wineList;
+        notifyDataSetChanged();
     }
 
     public void setOnClickListener(OnClickListener listener){
@@ -50,6 +51,10 @@ public WineRecyclerViewAdapter(){
     public int getItemCount() {
         System.out.println(wineList.size());
         return wineList.size();
+    }
+
+    public void emptyList() {
+        wineList.clear();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
