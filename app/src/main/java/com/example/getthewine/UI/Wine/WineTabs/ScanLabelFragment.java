@@ -145,42 +145,42 @@ public class ScanLabelFragment extends Fragment implements View.OnClickListener,
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, timestamp);
         contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
-        imageCapture.takePicture(getExecutor(), new ImageCapture.OnImageCapturedCallback() {
-            @Override
-            public void onCaptureSuccess(@NonNull ImageProxy image) {
-                super.onCaptureSuccess(image);
-                analyze(image);
-                Toast.makeText(context, "Photo saved successfully.", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onError(@NonNull ImageCaptureException exception) {
-                super.onError(exception);
-                Toast.makeText(context, "Error saving the photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        imageCapture.takePicture(getExecutor(), new ImageCapture.OnImageCapturedCallback() {
+//            @Override
+//            public void onCaptureSuccess(@NonNull ImageProxy image) {
+//                super.onCaptureSuccess(image);
+//                analyze(image);
+//                Toast.makeText(context, "Photo saved successfully.", Toast.LENGTH_SHORT).show();
 //
-//        imageCapture.takePicture(
-//                new ImageCapture.OutputFileOptions.Builder(
-//                        context.getContentResolver(),
-//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                        contentValues
-//                ).build(),
-//                getExecutor(),
-//                new ImageCapture.OnImageSavedCallback() {
-//                    @Override
-//                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-//                        Toast.makeText(context, "Photo saved successfully.", Toast.LENGTH_SHORT).show();
-//                    }
+//            }
 //
-//                    @Override
-//                    public void onError(@NonNull ImageCaptureException exception) {
-//                        Toast.makeText(context, "Error saving the photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//        );
+//            @Override
+//            public void onError(@NonNull ImageCaptureException exception) {
+//                super.onError(exception);
+//                Toast.makeText(context, "Error saving the photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+
+        imageCapture.takePicture(
+                new ImageCapture.OutputFileOptions.Builder(
+                        context.getContentResolver(),
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        contentValues
+                ).build(),
+                getExecutor(),
+                new ImageCapture.OnImageSavedCallback() {
+                    @Override
+                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                        Toast.makeText(context, "Photo saved successfully.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull ImageCaptureException exception) {
+                        Toast.makeText(context, "Error saving the photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
     }
 
     @Override

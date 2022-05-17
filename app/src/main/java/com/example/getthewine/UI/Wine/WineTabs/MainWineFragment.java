@@ -1,14 +1,9 @@
 package com.example.getthewine.UI.Wine.WineTabs;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.getthewine.R;
-import com.example.getthewine.UI.Auth.SignInActivity;
 import com.example.getthewine.UI.Auth.UserViewModel;
+import com.example.getthewine.UI.Wine.WineViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -29,7 +24,6 @@ public class MainWineFragment extends Fragment {
     private UserViewModel userViewModel;
 
     private View rootView = null;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +38,7 @@ public class MainWineFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.main_wine_fragment, container, false);
-
-
+        wineViewModel.setTemp(this);
 
         tabs = rootView.findViewById(R.id.tabs);
         viewPager2 = rootView.findViewById(R.id.viewPager);
@@ -64,7 +57,7 @@ public class MainWineFragment extends Fragment {
                         tab.setText("Scan Label");
                         break;
                     case 2:
-                        tab.setText("Wine Info");
+                        tab.setText("Favorites Collection");
                         break;
                 }
             }

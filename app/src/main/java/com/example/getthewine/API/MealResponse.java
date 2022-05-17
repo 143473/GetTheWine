@@ -8,7 +8,7 @@ public class MealResponse {
     private String remarks;
     private int score;
 
-    private Meal getMeal(){
+    public Meal getMeal(){
         return new Meal(id, name, remarks, score);
     }
 }

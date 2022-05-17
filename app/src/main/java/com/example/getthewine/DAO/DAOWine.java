@@ -55,4 +55,8 @@ public class DAOWine {
             }
         });
     }
+
+    public void getFavouriteWineList() {
+
+    }
 }

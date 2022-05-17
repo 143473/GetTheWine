@@ -14,12 +14,12 @@ import com.example.getthewine.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WineRecyclerViewAdapter extends RecyclerView.Adapter<WineRecyclerViewAdapter.ViewHolder> {
+public class SearchedWineRecyclerViewAdapter extends RecyclerView.Adapter<SearchedWineRecyclerViewAdapter.ViewHolder> {
 
 private List<Wine> wineList;
 private OnClickListener listener;
 
-public WineRecyclerViewAdapter(){
+public SearchedWineRecyclerViewAdapter(){
     wineList = new ArrayList<>();
 }
 
@@ -51,10 +51,6 @@ public WineRecyclerViewAdapter(){
     public int getItemCount() {
         System.out.println(wineList.size());
         return wineList.size();
-    }
-
-    public void emptyList() {
-        wineList.clear();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

@@ -9,8 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.getthewine.UI.Wine.WineTabs.WineViewModel;
-import com.example.getthewine.UI.WineMainActivity;
+import com.example.getthewine.UI.Wine.WineMainActivity;
 import com.example.getthewine.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,8 +53,6 @@ public class SignInActivity extends AppCompatActivity {
                         goToMainActivity();
                         Toast.makeText(this, "Welcome back " + currentUser.getDisplayName(), Toast.LENGTH_SHORT).show();
                     }
-
-
                 });
 
         activityResultLauncher.launch(signInIntent);

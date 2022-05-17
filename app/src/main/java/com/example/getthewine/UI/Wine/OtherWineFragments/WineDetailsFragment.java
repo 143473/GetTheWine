@@ -1,23 +1,23 @@
-package com.example.getthewine.UI.Wine.WineTabs;
+package com.example.getthewine.UI.Wine.OtherWineFragments;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.getthewine.Models.Wine;
 import com.example.getthewine.R;
+import com.example.getthewine.UI.Meal.MealsViewModel;
+import com.example.getthewine.UI.Wine.WineViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
-
-import java.util.Objects;
 
 public class WineDetailsFragment extends Fragment {
 
@@ -40,8 +40,10 @@ public class WineDetailsFragment extends Fragment {
     private TextView description;
 
     private FloatingActionButton addToFavorites;
+    private Button getRecommendedMeals;
 
     private WineViewModel wineViewModel;
+    private MealsViewModel mealsViewModel;
 
     public WineDetailsFragment(){
 
@@ -51,7 +53,7 @@ public class WineDetailsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
-        wineViewModel.searchForWine();
+        mealsViewModel = new ViewModelProvider(this).get(MealsViewModel.class);
     }
 
     @Override
@@ -60,7 +62,7 @@ public class WineDetailsFragment extends Fragment {
         rootView = inflater.inflate(R.layout.wine_details_fragment, container, false);
 
         addToFavorites = rootView.findViewById(R.id.addToFavorites);
-
+        getRecommendedMeals = rootView.findViewById(R.id.getRecommendedMeals);
 
         name = rootView.findViewById(R.id.wineName);
         color = rootView.findViewById(R.id.wineColor);
@@ -73,7 +75,6 @@ public class WineDetailsFragment extends Fragment {
         lifespan = rootView.findViewById(R.id.lifespan);
         drinkingTemperature = rootView.findViewById(R.id.drinkingTemperature);
         description = rootView.findViewById(R.id.wineDescription);
-
 
         wineViewModel.getSearchedWine().observe(getViewLifecycleOwner(), wine -> {
             String text = "";
@@ -108,11 +109,23 @@ public class WineDetailsFragment extends Fragment {
             }
         });
 
+        getRecommendedMeals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToRecommendedMealsFragment();
+            }
+        });
+
         return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void goToRecommendedMealsFragment(){
+        mealsViewModel.searchForRecommendedMeals();
+        NavHostFragment.findNavController(this).navigate(R.id.action_wineDetailsFragment3_to_recommendedMealsFragment);
     }
 }

@@ -12,4 +12,6 @@
     <string name="wine_description">Wine Description:</string>
     <string name="potential_taste_tags">Potential taste tags:</string>
     <string name="potential_event_pairing">Potential event pairing:</string>
+    <string name="remarks">Remarks: </string>
+    <string name="affinity_with_the_chose_wine">Affinity with the chose wine: </string>
 </resources>

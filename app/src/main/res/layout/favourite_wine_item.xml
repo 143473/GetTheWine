@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/wineDetailsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:backgroundTint="#DADADA"
     android:elevation="4dp"
@@ -127,26 +127,5 @@
             android:textColor="#121212"
             tools:text="@tools:sample/full_names" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/getRecommendedMeals"
-            android:text="Get recommended meals"
-            android:layout_gravity="center"/>
-
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addToFavorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_gravity="end|bottom"
-        android:clickable="true"
-        android:tint="@color/white"
-        android:src="@drawable/ic_favorite"
-        android:contentDescription="Add to favorites" />
-
-
 </androidx.cardview.widget.CardView>

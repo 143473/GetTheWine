@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.WineMainActivity"
+            android:name=".UI.Wine.WineMainActivity"
             android:exported="true">
         </activity>
         <meta-data

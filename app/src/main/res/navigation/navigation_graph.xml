@@ -20,12 +20,12 @@
     </fragment>
     <fragment
         android:id="@+id/page32"
-        android:name="com.example.getthewine.UI.Wine.WineTabs.page3"
+        android:name="com.example.getthewine.UI.Wine.WineTabs.FavoriteWineFragment"
         android:label="fragment_page3"
         tools:layout="@layout/fragment_page3" />
     <fragment
         android:id="@+id/wineDetailsFragment3"
-        android:name="com.example.getthewine.UI.Wine.WineTabs.WineDetailsFragment"
+        android:name="com.example.getthewine.UI.Wine.OtherWineFragments.WineDetailsFragment"
         android:label="wine_details_fragment"
         tools:layout="@layout/wine_details_fragment" >
         <action
@@ -40,20 +40,12 @@
         <action
             android:id="@+id/action_mainWineFragment_to_wineDetailsFragment3"
             app:destination="@id/wineDetailsFragment3" />
-        <action
-            android:id="@+id/action_mainWineFragment_to_favoriteWineFragment"
-            app:destination="@id/favoriteWineFragment" />
     </fragment>
     <activity
         android:id="@+id/signInActivity"
         android:name="com.example.getthewine.UI.Auth.SignInActivity"
         android:label="activity_sign_in"
         tools:layout="@layout/activity_sign_in" />
-    <fragment
-        android:id="@+id/favoriteWineFragment"
-        android:name="com.example.getthewine.UI.Wine.WineTabs.FavoriteWineFragment"
-        android:label="favourite_wine_list_fragment"
-        tools:layout="@layout/favourite_wine_list_fragment" />
     <fragment
         android:id="@+id/recommendedMealsFragment"
         android:name="com.example.getthewine.UI.Meal.RecommendedMealsFragment"

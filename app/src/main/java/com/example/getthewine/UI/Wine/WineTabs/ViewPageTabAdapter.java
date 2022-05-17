@@ -18,7 +18,7 @@ public class ViewPageTabAdapter extends FragmentStateAdapter {
             case 1:
                 return new ScanLabelFragment();
             case 2:
-                return new page3();
+                return new FavoriteWineFragment();
             default:
                 return new SearchByNameFragment();
         }

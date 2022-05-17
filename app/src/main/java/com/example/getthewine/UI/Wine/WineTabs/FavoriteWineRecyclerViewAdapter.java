@@ -1,0 +1,113 @@
+package com.example.getthewine.UI.Wine.WineTabs;
+
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.getthewine.Models.Wine;
+import com.example.getthewine.R;
+
+import java.util.List;
+
+public class FavoriteWineRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteWineRecyclerViewAdapter.ViewHolder> {
+
+    private List<Wine> wineList;
+    private OnClickListener listener;
+
+    public void setWineList(List<Wine> wineList) {
+        this.wineList = wineList;
+        notifyDataSetChanged();
+    }
+
+    public void setOnClickListener(OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view= inflater.inflate(R.layout.wine_item, parent, false);
+        return new FavoriteWineRecyclerViewAdapter.ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull FavoriteWineRecyclerViewAdapter.ViewHolder holder, int position) {
+        Resources resources = holder.itemView.getContext().getResources();
+
+        String text = "";
+        holder.name.setText(wineList.get(position).getName());
+        text = String.format(resources.getString(R.string.color) + "\n%s", wineList.get(position).getColor());
+        holder.color.setText(text);
+        text = String.format(resources.getString(R.string.featured_grapes) + "\n%s", wineList.get(position).getGrapes());
+        holder.grapes.setText(text);
+        text = String.format(resources.getString(R.string.wine_region) + "\n%s", wineList.get(position).getRegion());
+        holder.wineRegion.setText(text);
+        text = String.format(resources.getString(R.string.wine_producer) + "\n%s", wineList.get(position).getProducer());
+        holder.producer.setText(text);
+        text = String.format(resources.getString(R.string.potential_taste_tags) + "\n%s", wineList.get(position).getTaste_tags());
+        holder.tasteTags.setText(text);
+        text = String.format(resources.getString(R.string.potential_event_pairing) + "\n%s", wineList.get(position).getEvent_tags());
+        holder.eventTags.setText(text);
+        text = String.format(resources.getString(R.string.price_range) + "\n%s", wineList.get(position).getPrice_range());
+        holder.priceRange.setText(text);
+        text = String.format(resources.getString(R.string.lifespan) + "\n%d years", wineList.get(position).getLifespan());
+        holder.lifespan.setText(text);
+        text = String.format(resources.getString(R.string.optimal_drinking_temperature) + "\n%f", wineList.get(position).getOptimal_drinking_temperature().getCelsius());
+        holder.drinkingTemperature.setText(text);
+        text = String.format(resources.getString(R.string.wine_description) + "\n%s", wineList.get(position).getDescription());
+        holder.description.setText(text);
+    }
+
+    @Override
+    public int getItemCount() {
+        System.out.println(wineList.size());
+        return wineList.size();
+    }
+
+    public void emptyList() {
+        wineList.clear();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder{
+
+        private TextView name;
+        private TextView color;
+        private TextView grapes;
+        private TextView wineRegion;
+        private TextView producer;
+        private TextView tasteTags;
+        private TextView eventTags;
+        private TextView priceRange;
+        private TextView lifespan;
+        private TextView drinkingTemperature;
+        private TextView description;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.wineName);
+            color = itemView.findViewById(R.id.wineColor);
+            grapes = itemView.findViewById(R.id.grapes);
+            wineRegion = itemView.findViewById(R.id.wineRegion);
+            producer = itemView.findViewById(R.id.producer);
+            tasteTags = itemView.findViewById(R.id.tasteTags);
+            eventTags = itemView.findViewById(R.id.eventTags);
+            priceRange = itemView.findViewById(R.id.priceRange);
+            lifespan = itemView.findViewById(R.id.lifespan);
+            drinkingTemperature = itemView.findViewById(R.id.drinkingTemperature);
+            description = itemView.findViewById(R.id.wineDescription);
+
+            itemView.setOnClickListener(v -> {
+                listener.onClick(wineList.get(getBindingAdapterPosition()));
+            });
+        }
+    }
+    public interface OnClickListener {
+        void onClick(Wine wine);
+    }
+}

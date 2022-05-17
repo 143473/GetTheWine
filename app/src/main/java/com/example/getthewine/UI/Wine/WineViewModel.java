@@ -1,4 +1,4 @@
-package com.example.getthewine.UI.Wine.WineTabs;
+package com.example.getthewine.UI.Wine;
 
 import android.app.Application;
 
@@ -17,6 +17,7 @@ import java.util.List;
 public class WineViewModel extends AndroidViewModel {
     private UserRepository userRepository;
     private WineRepository wineRepository;
+    private Fragment temp;
     private int id;
 
     public WineViewModel(@NonNull Application application) {
@@ -52,5 +53,18 @@ public class WineViewModel extends AndroidViewModel {
 
     public void addWineToFavorites(Wine wine){
         wineRepository.addWineToFavorites(wine);
+    }
+
+    public Fragment getTemp() {
+        return temp;
+    }
+
+    public void setTemp(Fragment temp) {
+        this.temp = temp;
+    }
+
+    public LiveData<List<Object>> getFavouriteWineList() {
+        //return wineRepository.getFavouriteWineList();
+        return null;
     }
 }

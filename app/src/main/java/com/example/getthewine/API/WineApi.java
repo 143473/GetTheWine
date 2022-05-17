@@ -32,5 +32,5 @@ public interface WineApi {
     Call<List<WineResponse>> getSearchedWineListCoded();
 
     @GET("9a837de7-26c0-4092-87bb-18aea5500850")
-    Call<MealResponse> getMealsForTheWine();
+    Call<List<MealResponse>> getMealsForTheWine();
 }

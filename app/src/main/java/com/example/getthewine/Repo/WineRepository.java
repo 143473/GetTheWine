@@ -96,4 +96,8 @@ public class WineRepository {
     public void addWineToFavorites(Wine wine){
         daoWine.addWineToFavorites(wine);
     }
+
+    public void getFavouriteWineList() {
+        daoWine.getFavouriteWineList();
+    }
 }
