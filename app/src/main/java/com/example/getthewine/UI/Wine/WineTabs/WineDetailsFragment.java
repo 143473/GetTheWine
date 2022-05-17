@@ -24,7 +24,18 @@ public class WineDetailsFragment extends Fragment {
     }
 
     private View rootView = null;
-    private TextView textView;
+
+    private TextView name;
+    private TextView color;
+    private TextView grapes;
+    private TextView wineRegion;
+    private TextView producer;
+    private TextView tasteTags;
+    private TextView eventTags;
+    private TextView priceRange;
+    private TextView lifespan;
+    private TextView drinkingTemperature;
+    private TextView description;
 
     private WineViewModel wineViewModel;
 
@@ -36,20 +47,51 @@ public class WineDetailsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         wineViewModel = new ViewModelProvider(this).get(WineViewModel.class);
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-           int id = bundle.getInt("wineId");
-            System.out.println(id);
-            wineViewModel.searchForWine();
-        }
+        wineViewModel.searchForWine();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.wine_details_fragment, container, false);
-        textView = rootView.findViewById(R.id.text);
-       // textView.setText(wineViewModel.getSearchedWine().toString());
+
+        name = rootView.findViewById(R.id.wineName);
+        color = rootView.findViewById(R.id.wineColor);
+        grapes = rootView.findViewById(R.id.grapes);
+        wineRegion = rootView.findViewById(R.id.wineRegion);
+        producer = rootView.findViewById(R.id.producer);
+        tasteTags = rootView.findViewById(R.id.tasteTags);
+        eventTags = rootView.findViewById(R.id.eventTags);
+        priceRange = rootView.findViewById(R.id.priceRange);
+        lifespan = rootView.findViewById(R.id.lifespan);
+        drinkingTemperature = rootView.findViewById(R.id.drinkingTemperature);
+        description = rootView.findViewById(R.id.wineDescription);
+
+
+        wineViewModel.getSearchedWine().observe(getViewLifecycleOwner(), wine -> {
+            String text = "";
+            name.setText(wine.getName());
+            text = String.format(getResources().getString(R.string.color) + "\n%s", wine.getColor());
+            color.setText(text);
+            text = String.format(getResources().getString(R.string.featured_grapes) + "\n%s", wine.getGrapes());
+            grapes.setText(text);
+            text = String.format(getResources().getString(R.string.wine_region) + "\n%s", wine.getRegion());
+            wineRegion.setText(text);
+            text = String.format(getResources().getString(R.string.wine_producer) + "\n%s", wine.getProducer());
+            producer.setText(text);
+            text = String.format(getResources().getString(R.string.potential_taste_tags) + "\n%s", wine.getTaste_tags());
+            tasteTags.setText(text);
+            text = String.format(getResources().getString(R.string.potential_event_pairing) + "\n%s", wine.getEvent_tags());
+            eventTags.setText(text);
+            text = String.format(getResources().getString(R.string.price_range) + "\n%s", wine.getPrice_range());
+            priceRange.setText(text);
+            text = String.format(getResources().getString(R.string.lifespan) + "\n%d", wine.getLifespan());
+            lifespan.setText(text);
+            text = String.format(getResources().getString(R.string.optimal_drinking_temperature) + "\n%f", wine.getOptimal_drinking_temperature().getCelsius());
+            drinkingTemperature.setText(text);
+            text = String.format(getResources().getString(R.string.wine_description) + "\n%s", wine.getDescription());
+            description.setText(text);
+        });
 
         return rootView;
     }

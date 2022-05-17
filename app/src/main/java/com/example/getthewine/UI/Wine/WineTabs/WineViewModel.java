@@ -29,8 +29,8 @@ public class WineViewModel extends AndroidViewModel {
         return wineRepository.getSearchedWineList();
     }
 
-    public Wine getSearchedWine() {
-        return wineRepository.getSearchedWine().getValue();
+    public LiveData<Wine> getSearchedWine() {
+        return wineRepository.getSearchedWine();
     }
 
     public void searchForWine() {

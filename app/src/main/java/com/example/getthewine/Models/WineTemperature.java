@@ -11,7 +11,7 @@ public class WineTemperature {
 
     @Override
     public String toString() {
-        return "WineTemperature{" +
+        return "Optimal serving temperature" +
                 "celsius=" + celsius +
                 ", fahrenheit=" + fahrenheit +
                 '}';

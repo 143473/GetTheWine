@@ -22,7 +22,7 @@ public interface WineApi {
     Call<WineResponse> getWineById(@Path("id") int id, @Query("language") String language);
 
 
-    @GET("26f47bca-e93a-4e9a-b7c5-147d50e6d4ca")
+    @GET("2743c4dd-3288-44e6-9e69-98818ef1184f")
     Call<WineResponse> getWineHardCodedById();
 
     @GET("2951195b-0f09-438c-bd4a-c6af207a2319")

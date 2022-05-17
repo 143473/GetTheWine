@@ -17,10 +17,7 @@ public class Region {
 
     @Override
     public String toString() {
-        return "Region{" +
-                "country='" + country + '\'' +
-                ", region='" + region + '\'' +
-                '}';
+        return country + ", " + region;
     }
 
     public String getCountry() {

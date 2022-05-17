@@ -19,10 +19,9 @@ public class Producer {
 
     @Override
     public String toString() {
-        return "Producer{" +
-                "name='" + producerName + '\'' +
-                ", country=" + region +
-                '}';
+        return
+                "name: " + producerName + "\n" +
+                "country: " + region;
     }
 
     public String getProducerName() {

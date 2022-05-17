@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">GetTheWine</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment </string>
+    <string name="color">"Color:"</string>
+    <string name="featured_grapes">Featured grapes:</string>
+    <string name="wine_region">Wine region:</string>
+    <string name="wine_producer">Wine Producer:</string>
+    <string name="price_range">Price range:</string>
+    <string name="lifespan">Lifespan:</string>
+    <string name="optimal_drinking_temperature">Optimal drinking temperature:</string>
+    <string name="wine_description">Wine Description:</string>
+    <string name="potential_taste_tags">Potential taste tags:</string>
+    <string name="potential_event_pairing">Potential event pairing:</string>
 </resources>

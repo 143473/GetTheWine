@@ -15,7 +15,6 @@ public class Wine {
     private int lifespan;
     private WineTemperature optimal_drinking_temperature;
     private String description;
-    private WineExtraDetails glass_type;
 
 
     public Wine(int id, String name, String color, Producer producer) {
@@ -25,7 +24,7 @@ public class Wine {
         this.producer = producer;
     }
 
-    public Wine(int id, String name, String color, List<String> grapes, Region region, Producer producer, List<String> taste_tags, List<String> event_tags, String price_range, int lifespan, WineTemperature optimal_drinking_temperature, String description, WineExtraDetails glass_type) {
+    public Wine(int id, String name, String color, List<String> grapes, Region region, Producer producer, List<String> taste_tags, List<String> event_tags, String price_range, int lifespan, WineTemperature optimal_drinking_temperature, String description) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -38,7 +37,6 @@ public class Wine {
         this.lifespan = lifespan;
         this.optimal_drinking_temperature = optimal_drinking_temperature;
         this.description = description;
-        this.glass_type = glass_type;
     }
 
     public int getId() {
@@ -73,6 +71,70 @@ public class Wine {
         this.producer = producer;
     }
 
+    public List<String> getGrapes() {
+        return grapes;
+    }
+
+    public void setGrapes(List<String> grapes) {
+        this.grapes = grapes;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public List<String> getTaste_tags() {
+        return taste_tags;
+    }
+
+    public void setTaste_tags(List<String> taste_tags) {
+        this.taste_tags = taste_tags;
+    }
+
+    public List<String> getEvent_tags() {
+        return event_tags;
+    }
+
+    public void setEvent_tags(List<String> event_tags) {
+        this.event_tags = event_tags;
+    }
+
+    public String getPrice_range() {
+        return price_range;
+    }
+
+    public void setPrice_range(String price_range) {
+        this.price_range = price_range;
+    }
+
+    public int getLifespan() {
+        return lifespan;
+    }
+
+    public void setLifespan(int lifespan) {
+        this.lifespan = lifespan;
+    }
+
+    public WineTemperature getOptimal_drinking_temperature() {
+        return optimal_drinking_temperature;
+    }
+
+    public void setOptimal_drinking_temperature(WineTemperature optimal_drinking_temperature) {
+        this.optimal_drinking_temperature = optimal_drinking_temperature;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Wine{" +
@@ -86,8 +148,6 @@ public class Wine {
                 ", price_range='" + price_range + '\'' +
                 ", lifespan=" + lifespan +
                 ", optimal_drinking_temperature=" + optimal_drinking_temperature +
-                ", description='" + description + '\'' +
-                ", glass_type=" + glass_type +
-                '}';
+                ", description='" + description + '\'';
     }
 }

@@ -1,16 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wineDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Wine.WineTabs.WineDetailsFragment"
-    android:id="@+id/wineDetailsFragment">
+    android:layout_margin="8dp"
+    android:backgroundTint="#DADADA"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp"
+    tools:context=".UI.Wine.WineTabs.WineDetailsFragment">
 
-    <TextView
-        android:id="@+id/text"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:orientation="vertical"
+        android:padding="8dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/wineName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#121212"
+            android:textStyle="bold"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/wineColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/color"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/grapes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/featured_grapes"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/wineRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wine_region"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/producer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wine_producer"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/priceRange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/price_range"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/lifespan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lifespan"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/drinkingTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/optimal_drinking_temperature"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/wineDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wine_description"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tasteTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/potential_taste_tags"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/eventTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/potential_event_pairing"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#121212"
+            tools:text="@tools:sample/full_names" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addToFavorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="end|bottom"
+        android:clickable="true"
+        android:tint="@color/white"
+        android:src="@drawable/ic_favorite"
+        android:contentDescription="Add to favorites" />
+
+
+</androidx.cardview.widget.CardView>

@@ -17,9 +17,6 @@
         <argument
             android:name="wineId"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_searchByNameFragment2_to_wineDetailsFragment3"
-            app:destination="@id/wineDetailsFragment3" />
     </fragment>
     <fragment
         android:id="@+id/page32"
@@ -40,4 +37,9 @@
             android:id="@+id/action_mainWineFragment_to_wineDetailsFragment3"
             app:destination="@id/wineDetailsFragment3" />
     </fragment>
+    <activity
+        android:id="@+id/signInActivity"
+        android:name="com.example.getthewine.UI.Auth.SignInActivity"
+        android:label="activity_sign_in"
+        tools:layout="@layout/activity_sign_in" />
 </navigation>

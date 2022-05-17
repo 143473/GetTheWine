@@ -3,7 +3,6 @@ package com.example.getthewine.API;
 import com.example.getthewine.Models.Producer;
 import com.example.getthewine.Models.Region;
 import com.example.getthewine.Models.Wine;
-import com.example.getthewine.Models.WineExtraDetails;
 import com.example.getthewine.Models.WineTemperature;
 
 import java.util.List;
@@ -21,7 +20,6 @@ public class WineResponse {
     private int lifespan;
     private WineTemperature optimal_drinking_temperature;
     private String description;
-    private WineExtraDetails glass_type;
 
 
 
@@ -30,6 +28,6 @@ public class WineResponse {
     }
 
     public Wine getDetailedWine(){
-        return new Wine(id, name,  color, grapes,  region,  producer,  taste_tags,  event_tags,  price_range, lifespan, optimal_drinking_temperature, description, glass_type);
+        return new Wine(id, name,  color, grapes,  region,  producer,  taste_tags,  event_tags,  price_range, lifespan, optimal_drinking_temperature, description);
     }
 }
